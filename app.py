@@ -32,7 +32,9 @@ if uploaded_file is not None:
     input_name = session.get_inputs()[0].name
     proba = session.run(None, {input_name: img_array})[0][0][0]
 
-    label = "Dog" if proba > 0.5 else "Cat"
+    st.write(f"Debug - proba brute: {proba:.4f}")  # ← ligne de debug temporaire
+
+    label = "Dog 🐶" if proba > 0.5 else "Cat 🐱"
     confiance = proba if proba > 0.5 else 1 - proba
     st.subheader(f"Prédiction : {label}")
     st.write(f"Confiance : {confiance:.2%}")
